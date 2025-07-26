@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Rates Viewer</title>
+    <!-- Chart.js CDN for visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <style>
+        /* Custom scrollbar for table container - for better accessibility and aesthetics */
+        .table-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .table-container::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 10px;
+        }
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+
+        /* Base styles for Inter font and background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light background for softer look */
+            padding: 1rem; /* Equivalent to p-4 */
+        }
+        /* Container styling for central alignment and shadow */
+        .container {
+            max-width: 1200px; /* Equivalent to max-w-screen-lg or similar */
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #ffffff; /* bg-white */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            padding: 1.5rem; /* p-6 */
+        }
+        @media (min-width: 768px) { /* md:p-8 */
+            .container {
+                padding: 2rem;
+            }
+        }
+
+        /* Heading styles */
+        h1 {
+            font-size: 2.25rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            text-align: center; /* text-center */
+            color: #2d3748; /* text-gray-800 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        @media (min-width: 768px) { /* md:text-4xl */
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Filters Section */
+        .filters-section {
+            display: flex;
+            flex-direction: column; /* flex-col */
+            gap: 1rem; /* gap-4 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            align-items: center; /* items-center */
+            justify-content: center; /* justify-center */
+        }
+        @media (min-width: 768px) { /* md:flex-row */
+            .filters-section {
+                flex-direction: row;
+            }
+        }
+
+        .filter-group {
+            width: 100%; /* w-full */
+        }
+        @media (min-width: 768px) { /* md:w-1/3 */
+            .filter-group {
+                width: 33.333333%;
+            }
+        }
+
+        label {
+            display: block;
+            color: #4a5568; /* text-gray-700 */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+        select {
+            width: 100%; /* w-full */
+            padding: 0.75rem; /* p-3 */
+            border: 1px solid #cbd5e0; /* border border-gray-300 */
+            border-radius: 0.375rem; /* rounded-md */
+            outline: none; /* focus:outline-none */
+            box-shadow: 0 0 0 0 transparent; /* focus:ring-2 focus:ring-blue-500 equivalent focus style */
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        select:focus {
+            border-color: #3b82f6; /* blue-500 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* ring-2 with blue-500 */
+        }
+
+        /* Chart Section */
+        .chart-section {
+            margin-bottom: 2rem; /* mb-8 */
+            padding: 1rem; /* p-4 */
+            background-color: #f9fafb; /* bg-gray-50 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /* shadow-inner */
+        }
+        .chart-section h2 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: #2d3748; /* text-gray-800 */
+            margin-bottom: 1rem; /* mb-4 */
+            text-align: center; /* text-center */
+        }
+        canvas {
+            max-height: 400px; /* Limit chart height */
+            width: 100% !important; /* Ensure canvas is responsive */
+            height: auto !important; /* Maintain aspect ratio */
+        }
+
+        /* Data Table Section */
+        .table-container {
+            overflow-x: auto; /* overflow-x-auto for horizontal scrolling on small screens */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            margin-bottom: 2rem; /* Add margin between tables */
+        }
+        .table-container h2 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: #2d3748; /* text-gray-800 */
+            margin-bottom: 1rem; /* mb-4 */
+            text-align: center; /* text-center */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Ensure clean borders */
+            background-color: #ffffff; /* bg-white */
+            border-radius: 0.5rem; /* rounded-lg */
+            overflow: hidden; /* overflow-hidden */
+            min-width: 700px; /* Ensure table doesn't shrink too much */
+        }
+        thead {
+            background-color: #edf2f7; /* bg-gray-200 */
+        }
+        th {
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            text-align: left;
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 500; /* font-medium */
+            color: #4a5568; /* text-gray-600 */
+            text-transform: uppercase; /* uppercase */
+            letter-spacing: 0.05em; /* tracking-wider */
+        }
+        th:first-child {
+            border-top-left-radius: 0.5rem; /* rounded-tl-lg */
+        }
+        th:last-child {
+            border-top-right-radius: 0.5rem; /* rounded-tr-lg */
+        }
+        tbody {
+            background-color: #ffffff;
+        }
+        tbody tr {
+            border-bottom: 1px solid #e2e8f0; /* divide-y divide-gray-200 */
+        }
+        tbody tr:last-child {
+            border-bottom: none; /* No border on the last row */
+        }
+        td {
+            padding: 0.5rem 1rem; /* py-2 px-4 */
+            white-space: nowrap; /* whitespace-nowrap */
+            color: #4a5568; /* Default text color for cells */
+        }
+        /* Style for the inline increase/decrease text */
+        .increase-text {
+            font-size: 0.8em; /* Smaller size for the percentage */
+            color: #6b7280; /* A muted gray color */
+            margin-left: 0.5em; /* Small spacing from the main value */
+            font-weight: normal; /* Ensure it's not bold like the main number */
+        }
+        .increase-positive {
+            color: #10b981; /* Green for positive increase */
+        }
+        .increase-negative {
+            color: #ef4444; /* Red for negative increase */
+        }
+        /* Style for subtle N/A */
+        .na-text {
+            font-size: 0.9em; /* Slightly smaller than main text */
+            color: #9ca3af; /* Lighter gray color */
+            font-style: italic; /* Italicize for more subtlety */
+        }
+
+
+        /* Annual table specific styling */
+        .annual-table-container {
+            background-color: #fef7ed; /* Light orange background to differentiate */
+        }
+        .annual-table-container h2 {
+            color: #c2410c; /* Orange-700 color for annual table heading */
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container mx-auto">
+        <h1>Mess Rates Dashboard</h1>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <div class="filter-group">
+                <label for="messSelect">Select Mess:</label>
+                <select id="messSelect">
+                    <!-- Options populated by JavaScript -->
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="mealTypeSelect">Select Meal Type:</label>
+                <select id="mealTypeSelect">
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="snacks">Snacks</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-section">
+            <h2>Price Trend (Registered Rates)</h2>
+            <canvas id="priceChart" aria-label="Price trend chart showing registered meal rates over time"></canvas>
+        </div>
+
+        <!-- Data Table Section -->
+        <div class="table-container">
+            <h2>Detailed Rates and Growth Analysis</h2>
+            <table id="ratesTable" role="table" aria-label="Detailed Mess Rates Table">
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Registered (Rs.)</th>
+                        <th scope="col">Unregistered (Rs.)</th>
+                        <th scope="col">Guest (Rs.)</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="ratesTableBody">
+                    <!-- Table rows populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Annual Rates Table Section -->
+        <div class="table-container annual-table-container">
+            <h2>Annual Rates (August 1st Snapshots)</h2>
+            <table id="annualRatesTable" role="table" aria-label="Annual Mess Rates Table">
+                <thead>
+                    <tr>
+                        <th scope="col">Year</th>
+                        <th scope="col">Registered (Rs.)</th>
+                        <th scope="col">Unregistered (Rs.)</th>
+                        <th scope="col">Guest (Rs.)</th>
+                    </tr>
+                </thead>
+                <tbody id="annualRatesTableBody">
+                    <!-- Table rows populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+<script>
+fetch('prices.json')
+    .then(response => response.json())
+    .then(data => {
+        jsonData = data;
+        initializeDashboard();
+    })
+//    .catch(error => console.error('Error loading rates data:', error));
+
+let priceChart;
+
+function fillMissingYears(annualRates) {
+    const filled = [];
+    for (let i = 0; i < annualRates.length - 1; i++) {
+        const current = annualRates[i];
+        const next = annualRates[i + 1];
+        filled.push(current);
+        const gap = next.year - current.year;
+        if (gap > 1) {
+            const perYearIncrements = ['registered', 'unregistered', 'guest'].reduce((acc, key) => {
+                acc[key] = (next[key] - current[key]) / gap;
+                return acc;
+            }, {});
+            for (let j = 1; j < gap; j++) {
+                filled.push({
+                    year: current.year + j,
+                    registered: current.registered,
+                    unregistered: current.unregistered,
+                    guest: current.guest
+                });
+            }
+        }
+    }
+    filled.push(annualRates[annualRates.length - 1]);
+    return filled;
+}
+
+function updateAnnualTable(rates, mealType) {
+    const annualRatesTableBody = document.getElementById('annualRatesTableBody');
+    annualRatesTableBody.innerHTML = '';
+    const annualRates = fillMissingYears(extractAnnualRates(rates, mealType));
+    let previousRegistered = null, previousUnregistered = null, previousGuest = null;
+    annualRates.forEach(yearEntry => {
+        const formattedRegistered = formatAnnualRateWithGrowth(yearEntry.registered, previousRegistered);
+        const formattedUnregistered = formatAnnualRateWithGrowth(yearEntry.unregistered, previousUnregistered);
+        const formattedGuest = formatAnnualRateWithGrowth(yearEntry.guest, previousGuest);
+        const row = `
+            <tr>
+                <td>${yearEntry.year}</td>
+                <td>${formattedRegistered}</td>
+                <td>${formattedUnregistered}</td>
+                <td>${formattedGuest}</td>
+            </tr>
+        `;
+        annualRatesTableBody.insertAdjacentHTML('beforeend', row);
+        previousRegistered = yearEntry.registered;
+        previousUnregistered = yearEntry.unregistered;
+        previousGuest = yearEntry.guest;
+    });
+}
+
+function updateTable(rates, mealType) {
+    const ratesTableBody = document.getElementById('ratesTableBody');
+    ratesTableBody.innerHTML = '';
+    let previousRegistered = null, previousUnregistered = null, previousGuest = null;
+    let previousDate = null;
+    rates.forEach(rateEntry => {
+        const mealRates = rateEntry[mealType];
+        const currentRegistered = mealRates ? mealRates.registered : null;
+        const currentUnregistered = mealRates ? mealRates.unregistered : null;
+        const currentGuest = mealRates ? mealRates.guest : null;
+        const notes = rateEntry.notes ? rateEntry.notes.join(', ') : '';
+        const formattedRegistered = formatRateWithGrowth(currentRegistered, previousRegistered);
+        const formattedUnregistered = formatRateWithGrowth(currentUnregistered, previousUnregistered);
+        const formattedGuest = formatRateWithGrowth(currentGuest, previousGuest);
+        const row = `
+            <tr>
+                <td>${rateEntry.date}</td>
+                <td>${formattedRegistered}</td>
+                <td>${formattedUnregistered}</td>
+                <td>${formattedGuest}</td>
+                <td>${notes}</td>
+            </tr>
+        `;
+        ratesTableBody.insertAdjacentHTML('beforeend', row);
+        previousRegistered = currentRegistered;
+        previousUnregistered = currentUnregistered;
+        previousGuest = currentGuest;
+        previousDate = rateEntry.date;
+    });
+}
+
+function formatRateWithGrowth(currentValue, previousValue) {
+    if (currentValue === null) return '<span class="na-text">-</span>';
+    let displayString = `Rs. ${currentValue.toFixed(2)}`;
+    if (previousValue !== null) {
+        const absolute = currentValue - previousValue;
+        const percent = previousValue !== 0 ? (absolute / previousValue) * 100 : (absolute === 0 ? 0 : Infinity);
+        const sign = absolute >= 0 ? '+' : '';
+        const growthClass = absolute > 0 ? 'increase-positive' : absolute < 0 ? 'increase-negative' : '';
+        const growthText = percent === Infinity ? `(${sign}${absolute.toFixed(2)} / Inf%)` : `(${sign}${absolute.toFixed(2)} / ${percent.toFixed(2)}%)`;
+        return `${displayString} <span class="increase-text ${growthClass}">${growthText}</span>`;
+    }
+    return displayString;
+}
+
+function formatAnnualRateWithGrowth(currentValue, previousValue) {
+    if (currentValue === null) return '<span class="na-text">-</span>';
+    let displayString = `Rs. ${currentValue.toFixed(2)}`;
+    if (previousValue !== null) {
+        const absolute = currentValue - previousValue;
+        const percent = previousValue !== 0 ? (absolute / previousValue) * 100 : (absolute === 0 ? 0 : Infinity);
+        const sign = absolute >= 0 ? '+' : '';
+        const growthClass = absolute > 0 ? 'increase-positive' : absolute < 0 ? 'increase-negative' : '';
+        const growthText = percent === Infinity ? `(${sign}${absolute.toFixed(2)} / Inf% YoY)` : `(${sign}${absolute.toFixed(2)} / ${percent.toFixed(2)}% YoY)`;
+        return `${displayString} <span class="increase-text ${growthClass}">${growthText}</span>`;
+    }
+    return displayString;
+}
+
+function initializeDashboard() {
+    populateMessSelection();
+    document.getElementById('messSelect').value = 'Palash-South';
+    document.getElementById('mealTypeSelect').value = 'breakfast';
+    updateDashboard();
+    document.getElementById('messSelect').addEventListener('change', updateDashboard);
+    document.getElementById('mealTypeSelect').addEventListener('change', updateDashboard);
+}
+
+function populateMessSelection() {
+    const messSelect = document.getElementById('messSelect');
+    messSelect.innerHTML = '';
+    jsonData.forEach(mess => {
+        const option = document.createElement('option');
+        option.value = mess.mess;
+        option.textContent = mess.mess;
+        messSelect.appendChild(option);
+    });
+}
+
+function updateDashboard() {
+    const selectedMess = document.getElementById('messSelect').value;
+    const selectedMealType = document.getElementById('mealTypeSelect').value;
+    const messData = jsonData.find(m => m.mess === selectedMess);
+    if (messData) {
+        updateTable(messData.rates, selectedMealType);
+        updateAnnualTable(messData.rates, selectedMealType);
+        updateChart(messData.rates, selectedMealType);
+    }
+}
+
+function extractAnnualRates(rates, mealType) {
+    const annualRates = [];
+    const yearlyData = {};
+    rates.forEach(rateEntry => {
+        const date = new Date(rateEntry.date);
+        const year = date.getFullYear();
+        const mealRates = rateEntry[mealType];
+        if (mealRates) {
+            const aug1 = new Date(year, 7, 1);
+            const daysDiff = Math.abs(date - aug1) / (1000 * 60 * 60 * 24);
+            if (!yearlyData[year] || daysDiff < yearlyData[year].daysDiff) {
+                yearlyData[year] = {
+                    date: rateEntry.date,
+                    daysDiff,
+                    registered: mealRates.registered,
+                    unregistered: mealRates.unregistered,
+                    guest: mealRates.guest
+                };
+            }
+        }
+    });
+    return Object.keys(yearlyData).sort().map(y => ({ year: parseInt(y), ...yearlyData[y] }));
+}
+
+	/**
+         * Updates or initializes the Chart.js graph.
+         * @param {Array} rates - The array of rate objects for the selected mess.
+         * @param {string} mealType - The selected meal type.
+         */
+        function updateChart(rates, mealType) {
+            const dates = rates.map(entry => entry.date);
+            const chartData = rates.map(entry => ({
+                x: entry.date,
+                y: entry[mealType] ? entry[mealType].registered : null
+            })).filter(point => point.y !== null); // Remove null values for cleaner chart
+
+            const ctx = document.getElementById('priceChart').getContext('2d');
+
+            if (priceChart) {
+                // Update existing chart
+                priceChart.data.labels = dates;
+                priceChart.data.datasets[0].data = chartData;
+                priceChart.data.datasets[0].label = `Registered Price (${mealType.charAt(0).toUpperCase() + mealType.slice(1)})`;
+                priceChart.update();
+            } else {
+                // Initialize new chart
+                priceChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: `Registered Price (${mealType.charAt(0).toUpperCase() + mealType.slice(1)})`,
+                            data: chartData,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1,
+                            fill: false,
+                            pointRadius: 5,
+                            pointBackgroundColor: 'rgb(75, 192, 192)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Registered Meal Price Over Time'
+                            }
+                        },
+                        scales: {
+                            x: {
+                                type: 'time', // Use 'category' for discrete date labels
+                                title: {
+                                    display: true,
+                                    text: 'Date'
+                                }
+                            },
+                            y: {
+                                beginAtZero: false,
+                                title: {
+                                    display: true,
+                                    text: 'Price (Rs.)' // Added Rupee symbol here
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+window.onload = initializeDashboard;
+</script>
+</html>
