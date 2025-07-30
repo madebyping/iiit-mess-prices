@@ -3,7 +3,7 @@
     "mess": "Palash-South",
     "rates": [
       {
-        "date": "2011-08-01",
+        "date": "2010-08-01",
         "breakfast": {
           "registered": 17.00,
           "unregistered": null,
@@ -26,7 +26,7 @@
         }
       },
       {
-        "date": "2012-02-01",
+        "date": "2011-02-01",
         "breakfast": {
           "registered": 18.00,
           "unregistered": null,
@@ -72,9 +72,32 @@
         }
       },
       {
+        "date": "2013-08-01",
+        "breakfast": {
+          "registered": 26.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "lunch": {
+          "registered": 36.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "dinner": {
+          "registered": 36.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "snacks": {
+          "registered": null,
+          "unregistered": null,
+          "guest": null
+        }
+      },
+      {
         "date": "2014-01-01",
         "breakfast": {
-          "registered": 25.00,
+          "registered": 27.00,
           "unregistered": null,
           "guest": null
         },
@@ -97,6 +120,29 @@
       {
         "date": "2014-08-01",
         "breakfast": {
+          "registered": 25.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "lunch": {
+          "registered": 35.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "dinner": {
+          "registered": 35.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "snacks": {
+          "registered": null,
+          "unregistered": null,
+          "guest": null
+        }
+      },
+      {
+        "date": "2018-01-01",
+        "breakfast": {
           "registered": 27.00,
           "unregistered": null,
           "guest": null
@@ -118,7 +164,7 @@
         }
       },
       {
-        "date": "2018-01-01",
+        "date": "2019-07-01",
         "breakfast": {
           "registered": 28.00,
           "unregistered": null,
@@ -141,19 +187,19 @@
         }
       },
       {
-        "date": "2019-07-01",
+        "date": "2021-01-01",
         "breakfast": {
-          "registered": 34.00,
+          "registered": 31.00,
           "unregistered": null,
           "guest": null
         },
         "lunch": {
-          "registered": 47.00,
+          "registered": 45.00,
           "unregistered": null,
           "guest": null
         },
         "dinner": {
-          "registered": 48.00,
+          "registered": 45.00,
           "unregistered": null,
           "guest": null
         },
@@ -167,69 +213,69 @@
         "date": "2022-01-01",
         "breakfast": {
           "registered": 34.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 41.00,
+          "guest": 48.0
         },
         "lunch": {
           "registered": 48.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 59.00,
+          "guest": 70.0
         },
         "dinner": {
           "registered": 48.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 59.00,
+          "guest": 70.0
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 27.00,
+          "guest": 27.0
         }
       },
       {
         "date": "2023-01-01",
         "breakfast": {
           "registered": 37.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 41.00,
+          "guest": 50.0
         },
         "lunch": {
           "registered": 50.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 62.00,
+          "guest": 75.0
         },
         "dinner": {
           "registered": 50.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 62.00,
+          "guest": 75.0
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 29.00,
+          "guest": 29.0
         }
       },
       {
         "date": "2024-08-01",
         "breakfast": {
           "registered": 40.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 47.00,
+          "guest": 54.0
         },
         "lunch": {
           "registered": 54.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 67.00,
+          "guest": 80.0
         },
         "dinner": {
           "registered": 54.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 67.00,
+          "guest": 80.0
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 32.00,
+          "guest": 32.0
         }
       },
       {
@@ -253,10 +299,13 @@
           "registered": null,
           "unregistered": null,
           "guest": null
-        }
+        },
+        "notes": [
+          "According to the email sent out, \"South mess rates have been revised by Rs.2 per meal\". Not sure how does it affect all prices."
+        ]
       },
       {
-        "date": "2025-06-26",
+        "date": "2025-07-26",
         "breakfast": {
           "registered": 44.00,
           "unregistered": 52.00,
@@ -399,6 +448,29 @@
         }
       },
       {
+        "date": "2014-08-01",
+        "breakfast": {
+          "registered": 27.3,
+          "unregistered": null,
+          "guest": null
+        },
+        "lunch": {
+          "registered": 37.8,
+          "unregistered": null,
+          "guest": null
+        },
+        "dinner": {
+          "registered": 37.8,
+          "unregistered": null,
+          "guest": null
+        },
+        "snacks": {
+          "registered": null,
+          "unregistered": null,
+          "guest": null
+        }
+      },
+      {
         "date": "2014-11-01",
         "breakfast": {
           "registered": 27.00,
@@ -491,19 +563,42 @@
         }
       },
       {
-        "date": "2021-08-01",
+        "date": "2021-01-01",
         "breakfast": {
-          "registered": 34.00,
+          "registered": 33.00,
           "unregistered": null,
           "guest": null
         },
         "lunch": {
-          "registered": 48.00,
+          "registered": 47.00,
           "unregistered": null,
           "guest": null
         },
         "dinner": {
-          "registered": 48.00,
+          "registered": 47.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "snacks": {
+          "registered": null,
+          "unregistered": null,
+          "guest": null
+        }
+      },
+      {
+        "date": "2022-01-01",
+        "breakfast": {
+          "registered": 36.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "lunch": {
+          "registered": 50.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "dinner": {
+          "registered": 50.00,
           "unregistered": null,
           "guest": null
         },
@@ -517,96 +612,76 @@
         "date": "2022-04-01",
         "breakfast": {
           "registered": 36.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 41.00,
+          "guest": 48.00
         },
         "lunch": {
           "registered": 49.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 59.00,
+          "guest": 70.00
         },
         "dinner": {
           "registered": 49.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 59.00,
+          "guest": 70.00
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
-        }
-      },
-      {
-        "date": "2022-07-01",
-        "breakfast": {
-          "registered": 39.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "lunch": {
-          "registered": 50.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "dinner": {
-          "registered": 50.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 27.00,
+          "guest": 27.00
         }
       },
       {
         "date": "2023-01-01",
         "breakfast": {
           "registered": 39.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 43.00,
+            "guest": 50.00
         },
         "lunch": {
           "registered": 51.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 62.00,
+          "guest": 75.00
         },
         "dinner": {
           "registered": 51.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 62.00,
+          "guest": 75.00
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 29.00,
+          "guest": 29.00
         }
       },
       {
         "date": "2024-08-01",
         "breakfast": {
           "registered": 42.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 47.00,
+          "guest": 54.0
         },
         "lunch": {
-          "registered": 55.00,
-          "unregistered": null,
-          "guest": null
+          "registered": 56.00,
+          "unregistered": 67.00,
+          "guest": 80.0
         },
         "dinner": {
-          "registered": 55.00,
-          "unregistered": null,
-          "guest": null
+          "registered": 56.00,
+          "unregistered": 67.00,
+          "guest": 80.0
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
-        }
+          "registered": 0,
+          "unregistered": 32.00,
+          "guest": 32.0
+        },
+        "notes": [
+          "The price given on mess-old.iiit.ac.in differs from the price sent via email. On the website, it says Rs. 54.00 for lunch and dinner."
+        ]
       },
       {
-        "date": "2025-06-26",
+        "date": "2025-07-26",
         "breakfast": {
           "registered": 44.00,
           "unregistered": 52.00,
@@ -636,86 +711,63 @@
       {
         "date": "2010-08-01",
         "breakfast": {
-          "registered": 18.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "lunch": {
-          "registered": 29.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "dinner": {
-          "registered": 29.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
-        }
-      },
-      {
-        "date": "2011-02-01",
-        "breakfast": {
-          "registered": 18.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "lunch": {
-          "registered": 27.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "dinner": {
-          "registered": 27.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
-        }
-      },
-      {
-        "date": "2011-12-01",
-        "breakfast": {
-          "registered": 19.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "lunch": {
-          "registered": 29.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "dinner": {
-          "registered": 29.00,
-          "unregistered": null,
-          "guest": null
-        },
-        "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
-        }
-      },
-      {
-        "date": "2012-02-11",
-        "breakfast": {
           "registered": 20.00,
           "unregistered": null,
           "guest": null
         },
         "lunch": {
-          "registered": 30.00,
+          "registered": 25.00,
           "unregistered": null,
           "guest": null
         },
         "dinner": {
-          "registered": 30.00,
+          "registered": 25.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "snacks": {
+          "registered": null,
+          "unregistered": null,
+          "guest": null
+        }
+      },
+      {
+        "date": "2011-01-01",
+        "breakfast": {
+          "registered": 18.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "lunch": {
+          "registered": 27.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "dinner": {
+          "registered": 27.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "snacks": {
+          "registered": null,
+          "unregistered": null,
+          "guest": null
+        }
+      },
+      {
+        "date": "2011-02-12",
+        "breakfast": {
+          "registered": 18.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "lunch": {
+          "registered": 29.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "dinner": {
+          "registered": 29.00,
           "unregistered": null,
           "guest": null
         },
@@ -749,19 +801,19 @@
         }
       },
       {
-        "date": "2013-08-01",
+        "date": "2012-05-01",
         "breakfast": {
-          "registered": 25.00,
+          "registered": 22.00,
           "unregistered": null,
           "guest": null
         },
         "lunch": {
-          "registered": 35.00,
+          "registered": 33.00,
           "unregistered": null,
           "guest": null
         },
         "dinner": {
-          "registered": 35.00,
+          "registered": 33.00,
           "unregistered": null,
           "guest": null
         },
@@ -802,12 +854,12 @@
           "guest": null
         },
         "lunch": {
-          "registered": 39.00,
+          "registered": 35.00,
           "unregistered": null,
           "guest": null
         },
         "dinner": {
-          "registered": 39.00,
+          "registered": 35.00,
           "unregistered": null,
           "guest": null
         },
@@ -843,7 +895,7 @@
       {
         "date": "2018-01-01",
         "breakfast": {
-          "registered": 32.00,
+          "registered": 31.00,
           "unregistered": null,
           "guest": null
         },
@@ -866,17 +918,17 @@
       {
         "date": "2019-07-01",
         "breakfast": {
-          "registered": 35.00,
+          "registered": 32.00,
           "unregistered": null,
           "guest": null
         },
         "lunch": {
-          "registered": 46.00,
+          "registered": 42.00,
           "unregistered": null,
           "guest": null
         },
         "dinner": {
-          "registered": 46.00,
+          "registered": 42.00,
           "unregistered": null,
           "guest": null
         },
@@ -913,22 +965,22 @@
         "date": "2022-01-01",
         "breakfast": {
           "registered": 38.00,
-          "unregistered": null,
+          "unregistered": 41.00,
           "guest": null
         },
         "lunch": {
           "registered": 49.00,
-          "unregistered": null,
+          "unregistered": 59.00,
           "guest": null
         },
         "dinner": {
           "registered": 49.00,
-          "unregistered": null,
+          "unregistered": 62.00,
           "guest": null
         },
-        "snacks": {
-          "registered": null,
-          "unregistered": null,
+       "snacks": {
+           "registered": 0,
+          "unregistered": 27.00,
           "guest": null
         }
       },
@@ -936,50 +988,50 @@
         "date": "2023-01-01",
         "breakfast": {
           "registered": 39.00,
-          "unregistered": null,
+           "unregistered": 43.00,
           "guest": null
         },
         "lunch": {
           "registered": 52.00,
-          "unregistered": null,
+          "unregistered": 62.00,
           "guest": null
         },
         "dinner": {
           "registered": 52.00,
-          "unregistered": null,
+          "unregistered": 62.00,
           "guest": null
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 29.00,
+          "guest": 29.00
         }
       },
       {
         "date": "2024-08-01",
         "breakfast": {
           "registered": 42.00,
-          "unregistered": null,
+          "unregistered": 47.00,
           "guest": null
         },
         "lunch": {
           "registered": 55.00,
-          "unregistered": null,
+          "unregistered": 67.00,
           "guest": null
         },
         "dinner": {
           "registered": 55.00,
-          "unregistered": null,
+          "unregistered": 67.00,
           "guest": null
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 32.00,
+          "guest": 32.0
         }
       },
       {
-        "date": "2025-06-26",
+        "date": "2025-07-26",
         "breakfast": {
           "registered": 44.00,
           "unregistered": 52.00,
@@ -1101,6 +1153,29 @@
       {
         "date": "2018-01-01",
         "breakfast": {
+          "registered": 27.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "lunch": {
+          "registered": 39.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "dinner": {
+          "registered": 39.00,
+          "unregistered": null,
+          "guest": null
+        },
+        "snacks": {
+          "registered": null,
+          "unregistered": null,
+          "guest": null
+        }
+      },
+      {
+        "date": "2019-01-01",
+        "breakfast": {
           "registered": 28.00,
           "unregistered": null,
           "guest": null
@@ -1171,69 +1246,69 @@
         "date": "2022-01-01",
         "breakfast": {
           "registered": 34.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 41.00,
+          "guest": 48.00
         },
         "lunch": {
           "registered": 48.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 59.00,
+          "guest": 70.00
         },
         "dinner": {
           "registered": 48.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 59.00,
+          "guest": 75.00
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 27.00,
+          "guest": 27.00
         }
       },
       {
         "date": "2023-01-01",
         "breakfast": {
           "registered": 37.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 43.00,
+          "guest": 48.00
         },
         "lunch": {
           "registered": 50.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 62.00,
+          "guest": 75.00
         },
         "dinner": {
           "registered": 50.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 62.00,
+          "guest": 75.00
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+            "registered": 0,
+            "unregistered": 29.00,
+            "guest": 29.00
         }
       },
       {
         "date": "2024-08-01",
         "breakfast": {
           "registered": 40.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 47.00,
+          "guest": 54.0
         },
         "lunch": {
           "registered": 54.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 67.00,
+          "guest": 80.0
         },
         "dinner": {
           "registered": 54.00,
-          "unregistered": null,
-          "guest": null
+          "unregistered": 67.00,
+          "guest": 80.0
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
-          "guest": null
+          "registered": 0,
+          "unregistered": 32.00,
+          "guest": 32.0
         }
       },
       {
@@ -1249,7 +1324,7 @@
           "guest": null
         },
         "dinner": {
-          "registered": 53.00,
+          "registered": 57.00,
           "unregistered": null,
           "guest": null
         },
@@ -1257,7 +1332,8 @@
           "registered": null,
           "unregistered": null,
           "guest": null
-        }
+        },
+	  "notes": ["Prices adjusted due to moving into temporary space."]
       },
       {
         "date": "2025-02-16",
@@ -1272,7 +1348,7 @@
           "guest": null
         },
         "dinner": {
-          "registered": 56.75,
+          "registered": 60.75,
           "unregistered": null,
           "guest": null
         },
@@ -1280,10 +1356,11 @@
           "registered": null,
           "unregistered": null,
           "guest": null
-        }
+        },
+	  "notes": ["Prices adjusted due to changing plates."]
       },
       {
-        "date": "2025-06-26",
+        "date": "2025-07-26",
         "breakfast": {
           "registered": 42.00,
           "unregistered": 52.00,
@@ -1311,7 +1388,7 @@
     "mess": "Kadamb Non-Veg",
     "rates": [
       {
-        "date": "2023-09-20",
+        "date": "2015-09-20",
         "breakfast": {
           "registered": 35.00,
           "unregistered": null,
@@ -1387,12 +1464,12 @@
           "guest": null
         },
         "lunch": {
-          "registered": 108.00,
+          "registered": 100.00,
           "unregistered": null,
           "guest": null
         },
         "dinner": {
-          "registered": 75.00,
+          "registered": 70.00,
           "unregistered": null,
           "guest": null
         },
@@ -1410,7 +1487,7 @@
           "guest": null
         },
         "lunch": {
-          "registered": 116.00,
+          "registered": 110.00,
           "unregistered": null,
           "guest": null
         },
@@ -1429,22 +1506,22 @@
         "date": "2022-01-01",
         "breakfast": {
           "registered": 48.00,
-          "unregistered": null,
+          "unregistered": 58.00,
           "guest": null
         },
         "lunch": {
           "registered": 118.00,
-          "unregistered": null,
+          "unregistered": 142.00,
           "guest": null
         },
         "dinner": {
           "registered": 80.00,
-          "unregistered": null,
+          "unregistered": 96.00,
           "guest": null
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
+          "registered": 65.00,
+          "unregistered": 78.00,
           "guest": null
         }
       },
@@ -1452,22 +1529,22 @@
         "date": "2023-01-01",
         "breakfast": {
           "registered": 51.00,
-          "unregistered": null,
+            "unregistered": 61.00,
           "guest": null
         },
         "lunch": {
           "registered": 124.00,
-          "unregistered": null,
+          "unregistered": 149.00,
           "guest": null
         },
         "dinner": {
           "registered": 84.00,
-          "unregistered": null,
+          "unregistered": 101.00,
           "guest": null
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
+          "registered": 69.00,
+          "unregistered": 82.00,
           "guest": null
         }
       },
@@ -1475,22 +1552,22 @@
         "date": "2024-08-01",
         "breakfast": {
           "registered": 55.00,
-          "unregistered": null,
+          "unregistered": 65.00,
           "guest": null
         },
         "lunch": {
           "registered": 133.00,
-          "unregistered": null,
+          "unregistered": 160.00,
           "guest": null
         },
         "dinner": {
           "registered": 90.00,
-          "unregistered": null,
+          "unregistered": 111.00,
           "guest": null
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
+          "registered": 74.00,
+          "unregistered": 90.00,
           "guest": null
         }
       },
@@ -1541,7 +1618,7 @@
         }
       },
       {
-        "date": "2025-06-26",
+        "date": "2025-07-26",
         "breakfast": {
           "registered": 58.00,
           "unregistered": 67.00,
@@ -1549,7 +1626,7 @@
         },
         "lunch": {
           "registered": 136.00,
-          "unregistered": null,
+          "unregistered": 168.00,
           "guest": null
         },
         "dinner": {
@@ -1558,11 +1635,10 @@
           "guest": null
         },
         "snacks": {
-          "registered": null,
-          "unregistered": null,
+          "registered": 80.00,
+          "unregistered": 95.00,
           "guest": null
-        },
-        "notes": ["Kadamba Non-Veg Dinner: 80 Rs on Thursdays"]
+        }
       }
     ]
   }
